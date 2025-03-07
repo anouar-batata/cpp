@@ -190,8 +190,8 @@ void PhoneBook::add()
     }
     if (!check_space(str))
     {
-        std::cout << "Error: The nickname cannot be empty.\n";
-        goto CHECKPOINT_3;
+        std::cout << "Error: The darkest secret cannot be empty.\n";
+        goto CHECKPOINT_5;
     }
     cts[index].set_darkest_secret(str);
     index++;
