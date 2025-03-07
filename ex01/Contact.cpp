@@ -12,54 +12,54 @@
 
 #include "Contact.hpp"
 
-contact::contact()
+Contact::Contact()
 {
     
 }
-contact::~contact()
+Contact::~Contact()
 {
     
 }
-std::string contact::get_first_name()
+std::string Contact::get_first_name()
 {
     return first_name;    
 }
-std::string contact::get_last_name()
+std::string Contact::get_last_name()
 {
     return last_name;    
 }
-std::string contact::get_nickname()
+std::string Contact::get_nickname()
 {
     return nickname;    
 }
-std::string contact::get_phone_number()
+std::string Contact::get_phone_number()
 {
     return phone_number;   
 } 
-std::string contact::get_darkest_secret()
+std::string Contact::get_darkest_secret()
 {
     return darkest_secret;   
 }
 
 
-void    contact::set_first_name(std::string input)
+void    Contact::set_first_name(std::string input)
 {
     first_name = input;
 }
-void    contact::set_last_name(std::string input)
+void    Contact::set_last_name(std::string input)
 {
     last_name = input;
 }
-void    contact::set_nickname(std::string input)
+void    Contact::set_nickname(std::string input)
 {
     nickname = input;
 }
-void    contact::set_phone_number(std::string input)
+void    Contact::set_phone_number(std::string input)
 {
     phone_number = input;
 }
 
-void    contact::set_darkest_secret(std::string input)
+void    Contact::set_darkest_secret(std::string input)
 {
     darkest_secret = input;
 }

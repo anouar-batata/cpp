@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 
-class contact
+class Contact
 {
     private:
         std::string first_name;
@@ -11,7 +11,7 @@ class contact
         std::string darkest_secret;
 
     public:
-        contact();
+        Contact();
         std::string get_first_name();
         std::string get_last_name();
         std::string get_nickname();
@@ -22,5 +22,5 @@ class contact
         void    set_nickname(std::string input);
         void    set_phone_number(std::string input);
         void    set_darkest_secret(std::string input);
-        ~contact();
+        ~Contact();
 };
