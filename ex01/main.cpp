@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 
 
 int main(int ac, char **av)
 {
+    (void)av;
     if (ac != 1)
         return (1);
     else{
         std::string str;
-        phonebook Phonebook;
+        PhoneBook Phonebook;
         while (1)
         {
-            std::cout << "entre the command line ! : "
+            std::cout << "entre the command line ! : ";
             if (std::getline(std::cin, str).eof())
             {
                 std::cout << "error in input";
@@ -35,13 +36,16 @@ int main(int ac, char **av)
                 {
                     Phonebook.search();
                 }
-                    //
+                else if (str == "EXIT")
+                    Phonebook.ft_exit();
                     
                 else
                 {
                     std::cout << "< command not found pls try a valid command >\n";
                 }
             }
+            if (str == "ADD")
+                std::cout << " the contact stored !\n";
         }
     
     }

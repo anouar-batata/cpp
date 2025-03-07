@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "PhoneBook.hpp"
 #include <iostream>
+#include <cstdlib> 
 
-phonebook::phonebook()
+PhoneBook::PhoneBook()
 {
     index = 0;
     size = 0;
 }
-phonebook::~phonebook()
+PhoneBook::~PhoneBook()
 {
     
 }
@@ -86,7 +87,7 @@ int check_number_2(std::string str)
     return(1);
 }
 
-void phonebook::add()
+void PhoneBook::add()
 {
     if(index == 8)
         index = index % 8;
@@ -145,6 +146,11 @@ void phonebook::add()
         std::cout << "Error: The nickname cannot be empty.\n";
         goto CHECKPOINT_3;
     }
+    if (!check_space(str))
+    {
+        std::cout << "Error: The nickname cannot be empty.\n";
+        goto CHECKPOINT_3;
+    }
     cts[index].set_nickname(str);
     
 
@@ -182,6 +188,11 @@ void phonebook::add()
         std::cout << "Error: The darkest secret cannot be empty.\n";
         goto CHECKPOINT_5;
     }
+    if (!check_space(str))
+    {
+        std::cout << "Error: The nickname cannot be empty.\n";
+        goto CHECKPOINT_3;
+    }
     cts[index].set_darkest_secret(str);
     index++;
     if (size < 8)
@@ -198,7 +209,7 @@ std::string string_length(std::string str)
     return (str);
 }
 
-void    phonebook::search()
+void    PhoneBook::search()
 {
     std::string str;
     int i;
@@ -241,7 +252,7 @@ void    phonebook::search()
     }
     if (i >= size)
     {
-        std::cout << "the conatct not avaiable\n";
+        std::cout << "the conatct not available\n";
         return;
     }
         std::cout << "first name : " << cts[i].get_first_name() << "\n";
@@ -250,4 +261,10 @@ void    phonebook::search()
         std::cout << "phone number : " << cts[i].get_phone_number() << "\n";
         std::cout << "darkest secret : " << cts[i].get_darkest_secret() << "\n";
     
+}
+
+
+void    PhoneBook::ft_exit()
+{
+    exit(0);
 }

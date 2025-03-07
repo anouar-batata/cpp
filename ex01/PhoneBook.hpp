@@ -1,17 +1,18 @@
 #include "Contact.hpp"
 #include <iomanip>
+#include <cstdlib>
 
-class   phonebook
+class   PhoneBook
 {
     private:
         contact cts[8];
         int index;
         int size;
     public:
-        phonebook();
+        PhoneBook();
         void    add();
         void    search();
-        void    exit();
-        ~phonebook();
+        void    ft_exit();
+        ~PhoneBook();
 
 };
