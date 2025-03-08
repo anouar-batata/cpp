@@ -11,19 +11,12 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <cstdlib> 
 
 PhoneBook::PhoneBook()
 {
     index = 0;
     size = 0;
 }
-PhoneBook::~PhoneBook()
-{
-    
-}
-
 int	ft_isalpha(std::string str)
 {
 	int	i;

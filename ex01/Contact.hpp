@@ -11,7 +11,6 @@ class Contact
         std::string darkest_secret;
 
     public:
-        Contact();
         std::string get_first_name();
         std::string get_last_name();
         std::string get_nickname();
@@ -22,5 +21,4 @@ class Contact
         void    set_nickname(std::string input);
         void    set_phone_number(std::string input);
         void    set_darkest_secret(std::string input);
-        ~Contact();
 };
