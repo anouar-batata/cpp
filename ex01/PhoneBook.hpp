@@ -2,6 +2,10 @@
 #include <iomanip>
 #include <cstdlib>
 
+
+
+#ifndef PhoneBook_HPP
+# define PhoneBook_HPP
 class   PhoneBook
 {
     private:
@@ -15,3 +19,4 @@ class   PhoneBook
         void    ft_exit();
 
 };
+#endif 
