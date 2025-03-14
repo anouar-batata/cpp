@@ -1,7 +1,22 @@
 #include "Zombie.hpp"
 
-int main(int ac, char **av)
+// void    f()
+// {
+//     system("leaks a.out");
+// }
+
+int main()
 {
-    Zombie  obj;
-    
+    // atexit(f);
+    std::string foooo;
+    Zombie *obj;
+
+
+    foooo = "anouar";
+    randomChump(foooo);
+
+    obj = newZombie("said");
+    obj->announce();
+    delete(obj);
+
 }
