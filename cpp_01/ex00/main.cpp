@@ -7,7 +7,6 @@
 
 int main()
 {
-    // atexit(f);
     std::string foooo;
     Zombie *obj;
 
