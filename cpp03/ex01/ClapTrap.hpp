@@ -22,3 +22,9 @@ class ClapTrap
     unsigned int getEnergyPoints() const;
     unsigned int getAttackDamage() const;
 };
+
+/*
+    ClapTrap *ptr = new ScavTrap();
+
+    delete ptr;
+*/
