@@ -4,7 +4,7 @@ NAME = ClapTrap
 SRC = main.cpp ClapTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp Fixed.hpp
+%.o: %.cpp ClapTrap.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

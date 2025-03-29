@@ -1,10 +1,10 @@
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = megaphone
-SRC = megaphone.cpp
+NAME = ClapTrap
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp
+%.o: %.cpp ClapTrap.hpp ScavTrap.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
