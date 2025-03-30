@@ -90,3 +90,4 @@ unsigned int ClapTrap::getAttackDamage() const
 {
     return this->attackDamage;
 }
+    
