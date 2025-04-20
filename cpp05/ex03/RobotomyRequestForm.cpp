@@ -2,17 +2,17 @@
 #include <cstdlib>
 #include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm() : target("default"), AForm("Robot", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("Robot", 72, 45),target("default")
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : target(target), AForm("Robot", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("Robot", 72, 45) ,target(target)
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &obj)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &obj) : AForm("Robot", 72, 45)
 {
     *this = obj;
 }

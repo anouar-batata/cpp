@@ -4,7 +4,7 @@ NAME = Form
 SRC = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp bureaucrat.hpp Form.hpp
+%.o: %.cpp Bureaucrat.hpp Form.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

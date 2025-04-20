@@ -41,12 +41,12 @@ std::string Bureaucrat::get_the_name() const
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return "Grade is low than 1!";
+    return "Grade is hight than 1!";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return "Grade is too high than 150!";
+    return "Grade is too low than 150!";
 }
 
 void    Bureaucrat::grade_increment()

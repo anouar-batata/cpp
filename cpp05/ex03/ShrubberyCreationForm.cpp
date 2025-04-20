@@ -1,16 +1,16 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : target("default"), AForm("shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery", 145, 137) ,target("default")
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : target(target), AForm("shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("shrubbery", 145, 137) ,target(target)
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &obj)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &obj) : AForm("shrubbery", 145, 137)
 {
     *this = obj;
 }
@@ -30,7 +30,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
         throw GradeTooLowException();
     std::string str = target + "_shrubbery";
     std::ofstream file(str.c_str()); // just to return const char *
-    if (file)
+    if (file.is_open())
     {
         file << "       ###\n";
         file << "      #o###\n";
@@ -45,9 +45,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
         file.close();
     }
     else
-    {
-        std::cout << "cant open the file !" << std::endl;
-    }
+        throw FileNotOpen();
 
 }
 
@@ -55,6 +53,11 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 const char *ShrubberyCreationForm::FormNotSigned::what() const throw()
 {
     return("the form not signed !");
+}
+
+const char *ShrubberyCreationForm::FileNotOpen::what() const throw()
+{
+    return("cant open the file!");
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

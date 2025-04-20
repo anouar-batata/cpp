@@ -2,17 +2,17 @@
 #include <cstdlib>
 #include <ctime>
 
-PresidentialPardonForm::PresidentialPardonForm() : target("default"), AForm("Robot", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Robot", 25, 5) ,target("default")
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : target(target), AForm("Robot", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("Robot", 25, 5) ,target(target)
 {
     std::cout << "default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &obj)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm &obj) : AForm("Robot", 25, 5)
 {
     *this = obj;
 }

@@ -8,10 +8,12 @@ Intern::Intern()
 Intern::Intern(const Intern &obj)
 {
     std::cout << "copy constructor called" << std::endl;
+    (void)obj;
 }
 Intern &Intern::operator=(const Intern &obj)
 {
     std::cout << "copy assignment operator called" << std::endl;
+    (void) obj;
     return(*this);
 }
 

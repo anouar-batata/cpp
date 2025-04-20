@@ -36,12 +36,12 @@ Form &Form::operator=(const Form &obj)
 
 const char* Form::GradeTooHighException::what() const throw()
 {
-    return "Grade is low!";
+    return "Grade is hight!";
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-    return "Grade is too high!";
+    return "Grade is too low!";
 }
 
 

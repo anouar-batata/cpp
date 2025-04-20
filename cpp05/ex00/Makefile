@@ -4,7 +4,7 @@ NAME = bureaucrat
 SRC = main.cpp Bureaucrat.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp bureaucrat.hpp
+%.o: %.cpp Bureaucrat.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
