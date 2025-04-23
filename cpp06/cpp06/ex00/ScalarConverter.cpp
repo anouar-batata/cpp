@@ -18,7 +18,7 @@ int parse_the_string(std::string str)
             i++;
         else if (std::isalpha(str[i]) && i != 0 && str[i] == 'f')
         {
-            if (i != str.length() - 1)
+            if (i != str.length() - 1 || str[i - 1] == '.')
                 errro_msg();
             return(0);
         }
@@ -104,42 +104,76 @@ void    convert_the_char(char c)
     float f = static_cast<float>(c);
     double d = static_cast<double>(c);
 
-    if (std::isdigit(c))
-    {
-        std::cout << "char: Non displayable" << std::endl;
-    }
-    else
-    {
         std::cout << "char: ";
         if (std::isprint(c))
             std::cout << "'" << c << "'" << std::endl;
         else
         std::cout << "Non displayable" << std::endl;
-    }
+
    std::cout << "int: " << i << std::endl;
    std::cout << "float: " << f << "f" << std::endl;
    std::cout << "double: " << d << std::endl;
 }
 
-void    convert_the_float(std::string str)
+void    convert_and_cast(std::string str)
 {
+    std::cout << std::fixed << std::setprecision(1);
     double d;
     float f;
     int i;
     int flag_for_overflow = 0;
 
+    if (!str.empty() && str[str.length() - 1] == 'f')
+        str = str.substr(0, str.length() - 1);
+    // convert to double
+    std::stringstream ss(str);
+    ss >> d;
 
+    if (ss.fail()) {
+        std::cout << "Invalid input\n";
+        return;
+    }
+    //type cast to flout !
+    f = static_cast<float>(d);
     if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
         flag_for_overflow = 1;
-    std::cout << "char: ";
-    // if (std::)
+
+
+    if (flag_for_overflow == 1)
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std:: cout << "float: " << f << "f" << std::endl; 
+        std:: cout << "double: " << d << std::endl; 
+    }
+    else
+    {
+        //cast to int
+        i = static_cast<int>(d);
+        //cast to char
+        char c = static_cast<char>(d);
+        std::cout << "char: ";
+        if (!std::isprint(c))
+        {
+            std::cout << "Non displayable"<<  std::endl;
+        }
+        else
+            std::cout << "'" << c << "'" << std::endl;
+        std::cout << "int: " << i << std::endl;
+        std:: cout << "float: " << f << "f" << std::endl; 
+        std:: cout << "double: " << d << std::endl;
+    }
     
 }
 
 void    get_type_and_cast(std::string str)
 {
-    if (str.find('.') != std::string::npos && str.find('f') != std::string::npos)
-        convert_the_float(str);
+    if (str.find('.') != std::string::npos || str.find('f') != std::string::npos) // flout
+        convert_and_cast(str);
+    else if (str.find('.') != std::string::npos) // double
+        convert_and_cast(str);
+    else
+        convert_and_cast(str); // int 
 }
 
 void ScalarConverter::covert_fn(std::string str)
@@ -149,7 +183,7 @@ void ScalarConverter::covert_fn(std::string str)
         convert_to_others_types(flag);
     else
     {
-        if (str.length() == 1)
+        if (str.length() == 1 && std::isalpha(str[0]))
             convert_the_char(str[0]);
         else
         {
