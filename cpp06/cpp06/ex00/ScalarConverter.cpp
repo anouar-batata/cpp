@@ -153,12 +153,12 @@ void    convert_and_cast(std::string str)
         //cast to char
         char c = static_cast<char>(d);
         std::cout << "char: ";
-        if (!std::isprint(c))
+        if ((i < 0 || i > 128) || !std::isprint(c))
         {
             std::cout << "Non displayable"<<  std::endl;
         }
         else
-            std::cout << "'" << c << "'" << std::endl;
+            std::cout << "'" << c << "'" << std::endl; 
         std::cout << "int: " << i << std::endl;
         std:: cout << "float: " << f << "f" << std::endl; 
         std:: cout << "double: " << d << std::endl;
