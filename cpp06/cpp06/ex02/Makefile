@@ -4,7 +4,7 @@ NAME = prog
 SRC = main.cpp Cast.cpp Base.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp 
+%.o: %.cpp Cast.hpp C.hpp A.hpp B.hpp Base.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

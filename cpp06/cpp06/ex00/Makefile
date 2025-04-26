@@ -4,7 +4,7 @@ NAME = convert
 SRC = main.cpp ScalarConverter.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp
+%.o: %.cpp ScalarConverter.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

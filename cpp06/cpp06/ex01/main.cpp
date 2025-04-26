@@ -10,4 +10,5 @@ int main()
     std::cout << tmp << std::endl;
     Data *b = Serializer::deserialize(tmp);
     std::cout << b << std::endl;
+    std::cout << b->id << std::endl;
 }

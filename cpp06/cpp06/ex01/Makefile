@@ -1,10 +1,10 @@
 CPP = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = prog
-SRC = main.cpp Serializer.cpp Data.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp 
+%.o: %.cpp Serializer.hpp Data.hpp
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
