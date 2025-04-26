@@ -7,6 +7,9 @@
 
 class ScalarConverter
 {
+    private :
+        ScalarConverter();
+        
     public:
         static void covert_fn(std::string str);
 };

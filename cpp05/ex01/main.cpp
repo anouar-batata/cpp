@@ -5,32 +5,32 @@
 int main()
 {
 
-    try
-    {
-        Form f("from", 50, 50);
-        Bureaucrat  A("A", 50);
-        std::cout << f << std::endl;
-        A.signForm(f);
-        std::cout << f << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    // try
+    // {
+    //     Form f("from", 50, 50);
+    //     Bureaucrat  A("A", 50);
+    //     std::cout << f << std::endl;
+    //     A.signForm(f);
+    //     std::cout << f << std::endl;
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
 
-    try
-    {
-        Bureaucrat B("B", 100);
-        Form f1("form1", 50, 10);
-        std::cout << f1 << std::endl;
-        B.signForm(f1);
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << "this line will be not excecuted" << std::endl;
+    // try
+    // {
+    //     Bureaucrat B("B", 100);
+    //     Form f1("form1", 50, 10);
+    //     std::cout << f1 << std::endl;
+    //     B.signForm(f1);
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cout << "this line will be not excecuted" << std::endl;
 
-        std::cerr << e.what() << '\n';
-    }
+    //     std::cerr << e.what() << '\n';
+    // }
     
     try
     {
@@ -38,7 +38,7 @@ int main()
         Bureaucrat C("C", 400000);
         C.signForm(f2);
     }
-    catch(const std::exception& e)
+    catch(const std::exception &e)
     {
         std::cerr << e.what() << '\n';
     }

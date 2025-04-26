@@ -1,5 +1,9 @@
 #include "ScalarConverter.hpp"
 
+ScalarConverter::ScalarConverter()
+{
+    //
+}
 
 void errro_msg()
 {
@@ -115,29 +119,26 @@ void    convert_the_char(char c)
    std::cout << "double: " << d << std::endl;
 }
 
-void    convert_and_cast(std::string str)
+void    convert_and_cast_d_i(std::string str)
 {
-    std::cout << std::fixed << std::setprecision(1);
+    // std::cout << std::fixed << std::setprecision(std::numeric_limits<double>::digits10);
     double d;
     float f;
     int i;
     int flag_for_overflow = 0;
 
-    if (!str.empty() && str[str.length() - 1] == 'f')
-        str = str.substr(0, str.length() - 1);
     // convert to double
     std::stringstream ss(str);
     ss >> d;
-
     if (ss.fail()) {
         std::cout << "Invalid input\n";
         return;
     }
-    //type cast to flout !
+    //type cast to float !
     f = static_cast<float>(d);
     if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
         flag_for_overflow = 1;
-
+    std::cout << std::fixed << std::setprecision(1);
 
     if (flag_for_overflow == 1)
     {
@@ -162,18 +163,68 @@ void    convert_and_cast(std::string str)
         std::cout << "int: " << i << std::endl;
         std:: cout << "float: " << f << "f" << std::endl; 
         std:: cout << "double: " << d << std::endl;
+    }  
+}
+
+void    convert_and_cast_f(std::string str)
+{
+    // std::cout << std::fixed << std::setprecision(std::numeric_limits<double>::digits10);
+    double d;
+    float f;
+    int i;
+    int flag_for_overflow = 0;
+
+    if (!str.empty() && str[str.length() - 1] == 'f')
+        str = str.substr(0, str.length() - 1);
+    // convert to float
+    std::stringstream ss(str);
+    ss >> f;
+    if (ss.fail()) {
+        std::cout << "Invalid input\n";
+        return;
     }
-    
+    //type cast to double !
+    d = static_cast<double>(f);
+    if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+        flag_for_overflow = 1;
+    std::cout << std::fixed << std::setprecision(1);
+
+    if (flag_for_overflow == 1)
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std:: cout << "float: " << f << "f" << std::endl; 
+        std:: cout << "double: " << d << std::endl; 
+    }
+    else
+    {
+        //cast to int
+        i = static_cast<int>(d);
+        //cast to char
+        char c = static_cast<char>(d);
+        std::cout << "char: ";
+        if ((i < 0 || i > 128) || !std::isprint(c))
+        {
+            std::cout << "Non displayable"<<  std::endl;
+        }
+        else
+            std::cout << "'" << c << "'" << std::endl; 
+        std::cout << "int: " << i << std::endl;
+        std:: cout << "float: " << f << "f" << std::endl; 
+        std:: cout << "double: " << d << std::endl;
+    }  
 }
 
 void    get_type_and_cast(std::string str)
 {
-    if (str.find('.') != std::string::npos || str.find('f') != std::string::npos) // float
-        convert_and_cast(str);
+    if (str.find('.') != std::string::npos ||str.find('f') != std::string::npos) // float
+    {
+        convert_and_cast_f(str);
+    }
     else if (str.find('.') != std::string::npos) // double
-        convert_and_cast(str);
+        convert_and_cast_d_i(str);
     else
-        convert_and_cast(str); // int 
+        convert_and_cast_d_i(str); // int 
 }
 
 void ScalarConverter::covert_fn(std::string str)
