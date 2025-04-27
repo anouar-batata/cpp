@@ -14,6 +14,9 @@ class ScalarConverter
         ScalarConverter();
         
     public:
+        ScalarConverter(const ScalarConverter& copy);
+        ScalarConverter &operator=(const ScalarConverter &obj);
+        ~ScalarConverter();
         static void covert_fn(std::string str);
 };
 

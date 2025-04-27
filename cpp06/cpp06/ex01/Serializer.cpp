@@ -5,6 +5,21 @@ Serializer::Serializer()
     //
 }
 
+Serializer::~Serializer()
+{
+    //
+}
+
+Serializer::Serializer(const Serializer &obj)
+{
+    (void)obj;
+}
+
+Serializer &Serializer::operator=(const Serializer &obj)
+{
+    (void)obj;
+}
+
 uintptr_t Serializer::serialize(Data* ptr)
 {
     return(reinterpret_cast<uintptr_t>(ptr));

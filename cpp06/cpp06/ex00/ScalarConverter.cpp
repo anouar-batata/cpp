@@ -5,6 +5,22 @@ ScalarConverter::ScalarConverter()
     //
 }
 
+ScalarConverter::ScalarConverter(const ScalarConverter& copy)
+{
+    (void)copy;
+}
+
+ScalarConverter::~ScalarConverter()
+{
+    //
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &obj)
+{
+    (void)obj;
+}
+
+
 void errro_msg()
 {
     std::cout << "parce error" << std::endl;
@@ -126,19 +142,20 @@ void    convert_and_cast_d_i(std::string str)
     float f;
     int i;
     int flag_for_overflow = 0;
-
+    
     // convert to double
+    std::cout << std::fixed << std::setprecision(2);
     std::stringstream ss(str);
     ss >> d;
+    std::cout << d << std::endl;
     if (ss.fail()) {
         std::cout << "Invalid input\n";
         return;
     }
     //type cast to float !
     f = static_cast<float>(d);
-    if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+    if (d > 214783647.0 || d < -214783648.0)
         flag_for_overflow = 1;
-    std::cout << std::fixed << std::setprecision(1);
 
     if (flag_for_overflow == 1)
     {
@@ -154,9 +171,13 @@ void    convert_and_cast_d_i(std::string str)
         //cast to char
         char c = static_cast<char>(d);
         std::cout << "char: ";
+    
         if ((i < 0 || i > 128) || !std::isprint(c))
         {
-            std::cout << "Non displayable"<<  std::endl;
+            if (i < 0 || i > 255)
+            std::cout << "impossible"<<  std::endl;
+            else
+                std::cout << "Non displayable"<<  std::endl;
         }
         else
             std::cout << "'" << c << "'" << std::endl; 
@@ -176,6 +197,7 @@ void    convert_and_cast_f(std::string str)
 
     if (!str.empty() && str[str.length() - 1] == 'f')
         str = str.substr(0, str.length() - 1);
+
     // convert to float
     std::stringstream ss(str);
     ss >> f;
@@ -185,9 +207,11 @@ void    convert_and_cast_f(std::string str)
     }
     //type cast to double !
     d = static_cast<double>(f);
-    if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+    if (d != 5.99999999)
+        std::cout << "hi" << std::endl;
+    if (d > 214783647.0 || d < -214783648.0)
         flag_for_overflow = 1;
-    std::cout << std::fixed << std::setprecision(1);
+    // std::cout << std::fixed << std::setprecision(1);
 
     if (flag_for_overflow == 1)
     {
@@ -217,7 +241,7 @@ void    convert_and_cast_f(std::string str)
 
 void    get_type_and_cast(std::string str)
 {
-    if (str.find('.') != std::string::npos ||str.find('f') != std::string::npos) // float
+    if (str.find('.') != std::string::npos && str.find('f') != std::string::npos) // float
     {
         convert_and_cast_f(str);
     }
