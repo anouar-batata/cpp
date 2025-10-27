@@ -81,6 +81,22 @@ int second_parse(std::string line, size_t pipe_pos)
 }
 
 
+int date_is_valid(int year, int month, int day, std::string line)
+{
+    int days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+    {
+        days_in_month[1] = 29;
+    }
+    if (day > days_in_month[month - 1])
+    {
+        std::cerr << "ERROR: bad input => " << line << std::endl;
+        return 0;
+    }
+    return 1;
+}
+
 void parse_input_file(const std::string& input_file, const std::map<std::string, double>& data_base)
 {
     std::ifstream file(input_file.c_str());
@@ -131,12 +147,17 @@ void parse_input_file(const std::string& input_file, const std::map<std::string,
             std::cerr << "ERROR: bad input => " << input << std::endl;
             continue;
         }
+        int year_i = atoi(year.c_str());
         int month_i = atoi(month.c_str());
         int day_i = atoi(day.c_str());
         if (month_i < 1 || month_i > 12 || day_i < 1 || day_i > 31)
         {
             std::cerr << "ERROR: bad input => " << input << std::endl;
             continue; 
+        }
+        if (!date_is_valid(year_i, month_i, day_i, line))
+        {
+            continue;
         }
         //second part
         if (!second_parse(line, pipe_pos))
